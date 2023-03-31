@@ -1,6 +1,7 @@
 package com.multi.shop.member.repository;
 
 import com.multi.shop.member.domain.dao.MemberJoinDAO;
+import com.multi.shop.member.domain.vo.MemberFindVO;
 import com.multi.shop.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -20,4 +21,6 @@ public class MemberRepository {
     public boolean existByMemberPhone(String phone) {
         return memberMapper.existByMemberPhone(phone);
     }
+
+    public MemberFindVO findByMemberID(String id) {return memberMapper.findByMemberId(id);}
 }

@@ -4,6 +4,8 @@ import com.multi.shop.auth.dto.request.MemberJoinRequest;
 import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.dao.MemberJoinDAO;
+import com.multi.shop.member.domain.vo.MemberFindVO;
+import com.multi.shop.member.dto.response.MemberFindResponse;
 import com.multi.shop.member.exception.MemberErrorCode;
 import com.multi.shop.member.exception.MemberException;
 import com.multi.shop.member.repository.MemberRepository;
@@ -49,5 +51,10 @@ public class MemberService {
         if (memberRepository.existByMemberPhone(phone)) {
             throw new MemberException(MemberErrorCode.JOIN_INVALID_PHONE);
         }
+    }
+
+    public MemberFindResponse findByMemberId(String id) {
+        MemberFindVO findMember = memberRepository.findByMemberID(id);
+        return MemberFindResponse.builder().name(findMember.getName()).email(findMember.getEmail()).phoneNumber(findMember.getPhoneNumber()).build();
     }
 }

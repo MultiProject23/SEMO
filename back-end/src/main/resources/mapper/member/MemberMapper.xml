@@ -18,4 +18,10 @@
         FROM member
         WHERE phone = #{phone}
     </select>
+
+    <select id="findByMemberId" parameterType="String" resultType="MemberFindVO">
+        SELECT email, name, phoneNumber
+        FROM member
+        WHERE id = #{id}
+    </select>
 </mapper>
