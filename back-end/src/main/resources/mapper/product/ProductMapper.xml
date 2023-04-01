@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.multi.shop.product.mapper.ProductMapper">
+    <select id="selectListProduct" parameterType="String" resultType="ProductVO">
+        SELECT id       /* 상품id  */
+             , category /* 카테고리 */
+             , image    /* 상품이미지 */
+             , info     /* 상품설명 */
+             , name     /* 상품명 */
+             , price    /* 가격 */
+             , stock    /* 재고수량 */
+             , target   /* 상품타겟 */
+          FROM product
+        <where>
+            <if test='target != null and target != ""'>
+                AND target = #{target}
+            </if>
+            <if test='category != null and category != ""'>
+                AND category = #{category}
+            </if>
+            <if test='id != null and id != ""'>
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,7 +1,7 @@
-package com.multi.shop.member.controller;
+package com.multi.shop.product.controller;
 
-import com.multi.shop.member.dto.request.MemberJoinRequest;
-import com.multi.shop.member.service.MemberService;
+import com.multi.shop.product.dto.request.ProductRequest;
+import com.multi.shop.product.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-public class MemberController {
-    private final MemberService memberService;
-    @PostMapping("/api/join")
-    public ResponseEntity<Void> join(@RequestBody @Valid MemberJoinRequest request) {
-        memberService.join(request);
+public class ProductController {
+    private final ProductService productService;
+
+    @PostMapping("/api/getProduct")
+    public ResponseEntity<Void> getProduct(@RequestBody @Valid ProductRequest request) {
+        productService.getProduct(request);
         return ResponseEntity.ok().build();
     }
 }
