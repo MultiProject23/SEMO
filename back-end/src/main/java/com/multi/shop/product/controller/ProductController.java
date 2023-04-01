@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final ProductService productService;
 
-    @PostMapping("/api/getProduct")
+    @PostMapping("/api/product")
     public ResponseEntity<Void> getProduct(@RequestBody @Valid ProductRequest request) {
         productService.getProduct(request);
         return ResponseEntity.ok().build();

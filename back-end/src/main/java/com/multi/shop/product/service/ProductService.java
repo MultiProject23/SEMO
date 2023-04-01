@@ -1,7 +1,6 @@
 package com.multi.shop.product.service;
 
-import com.multi.shop.member.repository.MemberRepository;
-import com.multi.shop.product.domain.dao.ProductDAO;
+import com.multi.shop.product.dto.ProductDTO;
 import com.multi.shop.product.dto.request.ProductRequest;
 import com.multi.shop.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +17,10 @@ public class ProductService {
 
     @Transactional
     public Long getProduct(ProductRequest request) {
-        ProductDAO dao = ProductDAO.builder()
-                .target(request.getTarget())
-                .category(request.getCategory())
-                .build();
+        ProductDTO dto = ProductDTO.builder()
+                    .search(request.getSearch())
+                    .build();
 
-        return productRepository.getProduct(dao);
+        return productRepository.getProduct(dto);
     }
 }

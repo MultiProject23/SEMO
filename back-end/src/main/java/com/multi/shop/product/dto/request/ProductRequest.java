@@ -12,14 +12,10 @@ import java.time.LocalDate;
 @Data
 public class ProductRequest {
     @NotNull
-    private String target;
-
-    @NotNull
-    private String category;
+    private String search;
 
     @Builder
-    public ProductRequest(String target, String category) {
-        this.target = target;
-        this.category = category;
+    public ProductRequest(String search) {
+        this.search = search;
     }
 }
