@@ -1,14 +1,15 @@
 package com.multi.shop.product.controller;
 
-import com.multi.shop.product.dto.request.ProductRequest;
+import com.multi.shop.product.dto.response.ProductsResponse;
 import com.multi.shop.product.service.ProductService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -16,10 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final ProductService productService;
 
-    @PostMapping("/api/product")
-    public ResponseEntity<Void> getProduct(@RequestBody @Valid ProductRequest request) {
-        productService.getProduct(request);
-        return ResponseEntity.ok().build();
+    @GetMapping("/api/product")
+    public ResponseEntity<List<ProductsResponse>> getProducts(@Param("search") String search) {
+        List<ProductsResponse> products = productService.getProducts(search);
+        return ResponseEntity.ok(products);
     }
 }
+
 

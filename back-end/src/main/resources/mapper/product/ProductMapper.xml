@@ -3,14 +3,14 @@
 
 <mapper namespace="com.multi.shop.product.mapper.ProductMapper">
     <select id="selectListProduct" parameterType="ProductDTO" resultType="ProductVO">
-        SELECT id       /* 상품id  */
-             , category /* 카테고리 */
-             , image    /* 상품이미지 */
-             , info     /* 상품설명 */
-             , name     /* 상품명 */
-             , price    /* 가격 */
-             , stock    /* 재고수량 */
-             , target   /* 상품타겟 */
+        SELECT id
+             , category
+             , image
+             , info
+             , name
+             , price
+             , stock
+             , target
           FROM product
         <if test='search != null and search != ""'>
             where name like '%#{search}%'

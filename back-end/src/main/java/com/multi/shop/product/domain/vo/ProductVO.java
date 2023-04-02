@@ -1,16 +1,11 @@
 package com.multi.shop.product.domain.vo;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
+import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Data
+@Getter
 public class ProductVO {
-    private String id;
+    private Long id;
     private String category;
     private String image;
     private String info;
@@ -20,7 +15,7 @@ public class ProductVO {
     private String target;
 
     @Builder
-    public ProductVO(String id,String category,String image,String info,String name,int price,int stock,String target) {
+    public ProductVO(Long id,String category,String image,String info,String name,int price,int stock,String target) {
         this.id = id;
         this.category = category;
         this.image = image;
