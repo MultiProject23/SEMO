@@ -16,8 +16,6 @@ public class ProductsResponse {
     private String image;
     private String name;
     private int price;
-    //private Category category;
-    //private Target target;
     private String category;
     private String target;
 
@@ -29,5 +27,8 @@ public class ProductsResponse {
         this.price = price;
         this.category = category;
         this.target = target;
+
+
+
     }
 }
