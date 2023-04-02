@@ -1,8 +1,8 @@
 package com.multi.shop.member.mapper;
 
 
+import com.multi.shop.auth.dto.request.ModifyPasswordRequest;
 import com.multi.shop.member.domain.vo.MemberFindVO;
-import com.multi.shop.member.domain.vo.ModifyPasswordVO;
 import com.multi.shop.member.domain.vo.MemberVO;
 
 import java.util.Optional;
@@ -19,5 +19,7 @@ public interface MemberMapper {
 
     MemberFindVO findByMemberId(String id);
 
-    String modifyPassword(String id);
+    void modifyPassword (ModifyPasswordRequest request);
+
+    MemberVO findMember(Long id);
 }

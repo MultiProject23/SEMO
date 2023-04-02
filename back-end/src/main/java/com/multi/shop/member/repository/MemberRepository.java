@@ -1,8 +1,8 @@
 package com.multi.shop.member.repository;
 
 
+import com.multi.shop.auth.dto.request.ModifyPasswordRequest;
 import com.multi.shop.member.domain.vo.MemberFindVO;
-import com.multi.shop.member.domain.vo.ModifyPasswordVO;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,9 @@ public class MemberRepository {
         return memberMapper.existByMemberPhone(phone);
     }
 
-    public MemberFindVO findByMemberID(String id) {return memberMapper.findByMemberId(id);}
+    public MemberFindVO findByMemberID(String id) { return memberMapper.findByMemberId(id); }
 
-    public String modifyPassword(String id) {return memberMapper.modifyPassword(id);}
+    public void modifyPassword (ModifyPasswordRequest request) { memberMapper.modifyPassword(request); }
+
+    public MemberVO findMember(Long id) { return memberMapper.findMember(id); }
 }

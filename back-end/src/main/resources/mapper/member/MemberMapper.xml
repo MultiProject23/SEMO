@@ -31,9 +31,15 @@
         WHERE id = #{id}
     </select>
 
-    <update id="modifyPassword" parameterType="String">
+    <update id="modifyPassword" parameterType="ModifyPasswordRequest">
         UPDATE member
-        SET password = #{password}
-        WHERE id = #{id}
+        SET password = #{newPassword}
+        WHERE id = #{memberId}
     </update>
+
+    <select id="findMember" parameterType="Long" resultType="MemberVO">
+        SELECT *
+        FROM member
+        WHERE id = #{id}
+    </select>
 </mapper>

@@ -1,6 +1,6 @@
 package com.multi.shop.member.controller;
 
-import com.multi.shop.auth.dto.request.MemberJoinRequest;
+
 import com.multi.shop.auth.dto.request.ModifyPasswordRequest;
 import com.multi.shop.member.dto.response.MemberFindResponse;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
@@ -32,8 +32,8 @@ public class MemberController {
     }
 
     @PutMapping("/auth/member/password")
-    public ResponseEntity<Void> modifyPassword(@Param("memberId") String id, @RequestBody ModifyPasswordRequest passwordRequest) {
-        memberService.modifyPassword(id, passwordRequest);
+    public ResponseEntity<Void> modifyPassword(@RequestBody ModifyPasswordRequest request) {
+        memberService.modifyPassword(request);
         return ResponseEntity.ok().build();
     }
 }

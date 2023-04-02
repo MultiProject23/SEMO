@@ -4,7 +4,6 @@ import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
 import com.multi.shop.member.domain.vo.MemberFindVO;
 import com.multi.shop.auth.dto.request.ModifyPasswordRequest;
-import com.multi.shop.member.domain.vo.ModifyPasswordVO;
 import com.multi.shop.member.dto.response.MemberFindResponse;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberJoinRequest;
@@ -60,18 +59,26 @@ public class MemberService {
     }
 
     @Transactional
-    public String modifyPassword(String id, ModifyPasswordRequest passwordrequest) {
+    public void modifyPassword(ModifyPasswordRequest request) {
 
+        if (!request.getNowPassword().equals(request.getNewPassword())) {
 
-        if (!passwordEncoder.matches(passwordrequest.getNowPassword(), passwordrequest.getNewPassword())) {
+            MemberVO member = memberRepository.findMember(request.getMemberId());
+
+            String encode = passwordEncoder.encode(request.getNowPassword());
+
+            Password password = Password.encode(request.getNewPassword(), passwordEncoder);
+            request.setNewPassword(password.getValue());
+
+           memberRepository.modifyPassword(request);
+        } else {
             System.out.println("현재 비밀번호와 일치합니다");
         }
+    }
 
-        if (passwordEncoder.matches(passwordrequest.getNewPassword(), passwordrequest.getNewPasswordCheck())) {
-            System.out.println("비밀번호가 일치하지 않습니다");
+    private void confirmPassword(MemberVO member, String encode) {
+        if (!passwordEncoder.matches(member.getPassword(), encode)) {
+            throw new RuntimeException("현재 비밀번호가 일치하지 않습니다");
         }
-        ModifyPasswordVO vo = ModifyPasswordVO.builder().password(passwordrequest.getNewPassword()).build();
-
-        return memberRepository.modifyPassword(id);
     }
 }
