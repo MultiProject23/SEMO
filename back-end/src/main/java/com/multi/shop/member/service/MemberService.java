@@ -1,9 +1,13 @@
 package com.multi.shop.member.service;
 
-import com.multi.shop.auth.dto.request.MemberJoinRequest;
 import com.multi.shop.member.domain.Password;
 import com.multi.shop.member.domain.Phone;
-import com.multi.shop.member.domain.dao.MemberJoinDAO;
+import com.multi.shop.member.domain.vo.MemberFindVO;
+import com.multi.shop.auth.dto.request.ModifyPasswordRequest;
+import com.multi.shop.member.domain.vo.ModifyPasswordVO;
+import com.multi.shop.member.dto.response.MemberFindResponse;
+import com.multi.shop.member.domain.vo.MemberVO;
+import com.multi.shop.member.dto.request.MemberJoinRequest;
 import com.multi.shop.member.exception.MemberErrorCode;
 import com.multi.shop.member.exception.MemberException;
 import com.multi.shop.member.repository.MemberRepository;
@@ -29,14 +33,9 @@ public class MemberService {
         Password password = Password.encode(request.getPassword(), passwordEncoder);
         Phone phone = Phone.of(request.getPhone());
 
-        MemberJoinDAO dao = MemberJoinDAO.builder()
-                .brith(request.getBirth())
-                .email(request.getEmail())
-                .name(request.getName())
-                .password(password.getValue())
-                .phone(phone.getValue())
-                .build();
-        return memberRepository.save(dao);
+        MemberVO member = MemberVO.of(request, password, phone);
+
+        return memberRepository.save(member);
     }
 
     private void validateMemberEmailIsNotDuplicated(String email) {
@@ -49,5 +48,30 @@ public class MemberService {
         if (memberRepository.existByMemberPhone(phone)) {
             throw new MemberException(MemberErrorCode.JOIN_INVALID_PHONE);
         }
+    }
+
+    public MemberFindResponse findByMemberId(String id) {
+        MemberFindVO findMember = memberRepository.findByMemberID(id);
+        return MemberFindResponse.builder()
+                .name(findMember.getName())
+                .email(findMember.getEmail())
+                .phoneNumber(findMember.getPhoneNumber())
+                .build();
+    }
+
+    @Transactional
+    public String modifyPassword(String id, ModifyPasswordRequest passwordrequest) {
+
+
+        if (!passwordEncoder.matches(passwordrequest.getNowPassword(), passwordrequest.getNewPassword())) {
+            System.out.println("현재 비밀번호와 일치합니다");
+        }
+
+        if (passwordEncoder.matches(passwordrequest.getNewPassword(), passwordrequest.getNewPasswordCheck())) {
+            System.out.println("비밀번호가 일치하지 않습니다");
+        }
+        ModifyPasswordVO vo = ModifyPasswordVO.builder().password(passwordrequest.getNewPassword()).build();
+
+        return memberRepository.modifyPassword(id);
     }
 }
