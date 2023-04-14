@@ -13,15 +13,15 @@
 
 ### 1. Member
 
-| Column   | DataType    | Java DataType | PK  | FK  | NN  | Description             |
-| -------- |-------------| ------------- | --- | --- | --- | ----------------------- |
-| Id       | bigint      | Long          | O   |     |     | 멤버 식별자             |
-| Birth    | data        | LocalData     |     |     | O   | 멤버의 생년 월일        |
-| Email    | varchar(30) | String        |     |     | O   | 멤버의 이메일           |
-| Name     | varchar(20) | String        |     |     | O   | 멤버의 이름             |
+| Column   | DataType    | Java DataType | PK  | FK  | NN  | Description     |
+| -------- |-------------| ------------- | --- | --- | --- |-----------------|
+| Id       | bigint      | Long          | O   |     |     | 멤버 식별자          |
+| Birth    | data        | LocalData     |     |     | O   | 멤버의 생년월일        |
+| Email    | varchar(30) | String        |     |     | O   | 멤버의 이메일         |
+| Name     | varchar(20) | String        |     |     | O   | 멤버의 이름          |
 | Password | varchar(16) | String        |     |     | O   | 멤버의 비밀번호 (HS512) |
-| Phone    | varchar(13) | String        |     |     | O   | 멤버의 전화번호         |
-| Role     | varchar(20) | Enum          |     |     | O   | 멤버의 역활             |
+| Phone    | varchar(13) | String        |     |     | O   | 멤버의 전화번호        |
+| Role     | varchar(20) | Enum          |     |     | O   | 멤버의 역할          |
 
 ### 2. Product
 
@@ -61,14 +61,14 @@
 
 ### 5. Orders
 
-| Column        | DataType    | Java DataType | PK  | FK  | NN  | Description      |
-|---------------|-------------| ------------- | --- | --- | --- | ---------------- |
-| Id            | bigint      | Long          | O   |     |     | 주문 목록 식별자 |
+| Column        | DataType    | Java DataType | PK  | FK  | NN  | Description |
+|---------------|-------------| ------------- | --- | --- | --- |-------------|
+| Id            | bigint      | Long          | O   |     |     | 주문 목록 식별자   |
 | Member_Id     | bigint      | Long          |     | O   | O   | 멤버 식별자      |
 | Product_Id    | bigint      | Long          |     | O   | O   | 제품 식별자      |
-| Date          | date        | LocalDate     |     |     | O   | 주문 날자        |
-| Quantity      | integer     | int           |     |     | O   | 주문 수량        |
-| Oroder_Status | varchar(20) | Enum          |     |     | O   | 주문 상태        |
+| Date          | date        | LocalDate     |     |     | O   | 주문 날짜       |
+| Quantity      | integer     | int           |     |     | O   | 주문 수량       |
+| Oroder_Status | varchar(20) | Enum          |     |     | O   | 주문 상태       |
 
 - `Member ----< Order`
 - `Product ----< Order`
