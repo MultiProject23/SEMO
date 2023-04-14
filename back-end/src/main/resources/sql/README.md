@@ -14,7 +14,7 @@
 ### 1. Member
 
 | Column   | DataType    | Java DataType | PK  | FK  | NN  | Description      |
-| -------- |-------------| ------------- | --- | --- | --- |------------------|
+| -------- |-------------| ------------- | --- | --- | --- | ------------------|
 | Id       | bigint      | Long          | O   |     |     | 멤버 식별자           |
 | Birth    | data        | LocalData     |     |     | O   | 멤버의 생년 월일        |
 | Email    | varchar(30) | String        |     |     | O   | 멤버의 이메일          |
