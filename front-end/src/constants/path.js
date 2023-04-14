@@ -5,6 +5,7 @@ const BROWSER_PATH = {
   JOIN: "/join",
   LOGIN: "/login",
   MY: "/my",
+  ADMIN: "/admin",
   OUTFIT: "/outfit",
   PRODUCT: "/product",
   REVIEW: "/review",
