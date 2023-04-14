@@ -13,15 +13,15 @@
 
 ### 1. Member
 
-| Column   | DataType    | Java DataType | PK  | FK  | NN  | Description     |
-| -------- |-------------| ------------- | --- | --- | --- |-----------------|
-| Id       | bigint      | Long          | O   |     |     | 멤버 식별자          |
-| Birth    | data        | LocalData     |     |     | O   | 멤버의 생년월일        |
-| Email    | varchar(30) | String        |     |     | O   | 멤버의 이메일         |
-| Name     | varchar(20) | String        |     |     | O   | 멤버의 이름          |
+| Column   | DataType    | Java DataType | PK  | FK  | NN  | Description      |
+| -------- |-------------| ------------- | --- | --- | --- |------------------|
+| Id       | bigint      | Long          | O   |     |     | 멤버 식별자           |
+| Birth    | data        | LocalData     |     |     | O   | 멤버의 생년 월일        |
+| Email    | varchar(30) | String        |     |     | O   | 멤버의 이메일          |
+| Name     | varchar(20) | String        |     |     | O   | 멤버의 이름           |
 | Password | varchar(16) | String        |     |     | O   | 멤버의 비밀번호 (HS512) |
-| Phone    | varchar(13) | String        |     |     | O   | 멤버의 전화번호        |
-| Role     | varchar(20) | Enum          |     |     | O   | 멤버의 역할          |
+| Phone    | varchar(13) | String        |     |     | O   | 멤버의 전화번호         |
+| Role     | varchar(20) | Enum          |     |     | O   | 멤버의 역활           |
 
 ### 2. Product
 
