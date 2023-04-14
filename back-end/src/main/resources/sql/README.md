@@ -61,9 +61,9 @@
 
 ### 5. Orders
 
-| Column        | DataType    | Java DataType | PK  | FK  | NN  | Description |
-|---------------|-------------| ------------- | --- | --- | --- |-------------|
-| Id            | bigint      | Long          | O   |     |     | 주문 목록 식별자   |
+| Column        | DataType    | Java DataType | PK  | FK  | NN  | Description      |
+|---------------|-------------| ------------- | --- | --- | --- |----------------- |
+| Id            | bigint      | Long          | O   |     |     | 주문 목록 식별자 |
 | Member_Id     | bigint      | Long          |     | O   | O   | 멤버 식별자      |
 | Product_Id    | bigint      | Long          |     | O   | O   | 제품 식별자      |
 | Date          | date        | LocalDate     |     |     | O   | 주문 날짜       |
