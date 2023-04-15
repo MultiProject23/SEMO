@@ -16,7 +16,7 @@ const Info = styled.div`
 
 const MemberTable = styled.table`
   margin: 10px;
-  width: 50%;
+  width: 20%;
   height: 40%;
   text-align: center;
   border-collapse: collapse;

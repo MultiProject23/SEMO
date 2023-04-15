@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./index.styled";
 
 function ProductAdmin({ user_id, name, email }) {
@@ -20,35 +20,9 @@ function ProductAdmin({ user_id, name, email }) {
           "email": "project03@gmail.com",
           }
   ];
-  const [members, setMembers] = useState(data);
   
   return (
     <div>
-      <S.Text>회원 현황</S.Text>
-      <S.MemberContainer>
-        <S.MemberTable>
-      <thead>
-    <tr>
-    <S.StyledTh>신규 회원</S.StyledTh>  
-    <S.StyledTh>방문 회원</S.StyledTh>
-    <S.StyledTh>전체 회원 수</S.StyledTh>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <S.MemberTd>회원</S.MemberTd>
-      <S.MemberTd>회원</S.MemberTd>
-      <S.MemberTd>회원</S.MemberTd>
-    </tr>
-    </tbody>
-    </S.MemberTable>
-      </S.MemberContainer>
-        <S.Info>
-      신규 회원: 해당 날짜 회원가입 횟수<br/>
-      방문 회원: 해당 날짜 로그인 횟수<br/>
-      전체 회원 수: 등록된 회원 수
-      </S.Info>
-
           <S.Text>회원 리스트</S.Text>
     <S.MemberlistContainer>
       <S.MemberlistTable>
