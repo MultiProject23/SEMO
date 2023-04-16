@@ -1,26 +1,28 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import * as S from "./index.styled";
+import axios from "axios";
+import { API_PATH } from "../../../constants/path";
+import { useParams } from "react-router-dom";
 
-function ProductAdmin({ user_id, name, email }) {
-  // 더미데이터
-  const data = [
-    {
-      "user_id": 1,
-      "name": "홍길동",
-      "email": "project0109@gmail.com",
-      },
-      {
-        "user_id": 2,
-        "name": "김기자",
-        "email": "project02@gmail.com",
-        },
-        {
-          "user_id": 3,
-          "name": "이기자",
-          "email": "project03@gmail.com",
-          }
-  ];
-  
+function MemberAdmin({ id, name, email }) {
+  const [data, setData] = useState([]);
+  const param = useParams();
+
+  const memberListRequest = useCallback(async () => {
+    await axios
+      .get(`${API_PATH.ADMIN.MEMBER}`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [param]);
+
+  useEffect(() => {
+    memberListRequest();
+  }, [memberListRequest]);
+
   return (
     <div>
           <S.Text>회원 리스트</S.Text>
@@ -35,11 +37,11 @@ function ProductAdmin({ user_id, name, email }) {
         </tr>
         </thead>
         <tbody>
-        {data.map((data, index) => (
-              <tr key={index}>
-                <S.MemberlistTd>{data.user_id}</S.MemberlistTd>
-                <S.MemberlistTd>{data.name}</S.MemberlistTd>
-                <S.MemberlistTd>{data.email}</S.MemberlistTd>
+        {data.map((member) => (
+              <tr key={member.id}>
+                <S.MemberlistTd>{member.id}</S.MemberlistTd>
+                <S.MemberlistTd>{member.name}</S.MemberlistTd>
+                <S.MemberlistTd>{member.email}</S.MemberlistTd>
                 <S.MemberlistTd>
                   <input type="checkbox" />
                 </S.MemberlistTd>
@@ -57,4 +59,4 @@ function ProductAdmin({ user_id, name, email }) {
   );
 }
 
-export default ProductAdmin;
+export default MemberAdmin;

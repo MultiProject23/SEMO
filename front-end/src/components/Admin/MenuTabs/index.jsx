@@ -1,27 +1,26 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./index.styled";
+import { BROWSER_PATH } from "../../../constants/path";
 import MemberAdmin from "../MemberAdmin";
 import ProductAdmin from "../ProductAdmin";
 
 function MenuTabs() {
   const location = useLocation();
   const path = location.pathname;
-  const member = path.includes("member");
-  const product = path.includes("product");
   const navigate = useNavigate();
   
   useEffect(() => {
-    if (!member && !product) {
+    if (path === BROWSER_PATH.ADMIN) {
       navigate("/admin/member", { replace: true });
     }
-  }, [member, product, navigate]);
+  }, [path, navigate]);
 
-  var element;
-  if (member) {
+  let element;
+  if (path === "/admin/member") { 
     element = <MemberAdmin />;
   } 
-  if (product) {
+  if (path === "/admin/product") {
     element = <ProductAdmin />;
   }
 

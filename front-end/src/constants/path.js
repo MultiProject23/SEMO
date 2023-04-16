@@ -47,6 +47,12 @@ const API_PATH = {
     AUTH: "/auth/review",
     FORM: "/auth/review/form",
   },
+  ADMIN: {
+    BASE: "/api/admin",
+    AUTH: "/auth/admin",
+    MEMBER: "/api/admin/member",
+    PRODUCT: "/api/admin/product",
+  },
 };
 
 export { BROWSER_PATH, API_PATH };
