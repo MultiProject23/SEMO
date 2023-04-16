@@ -4,6 +4,7 @@ import com.multi.shop.member.domain.Member;
 import com.multi.shop.member.domain.vo.MemberVO;
 import com.multi.shop.member.dto.request.MemberModifyPWRequest;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface MemberMapper {
@@ -12,6 +13,8 @@ public interface MemberMapper {
     Optional<Member> findById(Long id);
 
     Optional<MemberVO> findByMemberEmail(String email);
+
+    List<Member> findAll();
 
     void updatePassword(MemberModifyPWRequest request);
 
