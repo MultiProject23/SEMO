@@ -16,6 +16,8 @@ public interface MemberMapper {
 
     List<Member> findAll();
 
+    int remove(Long id);
+
     void updatePassword(MemberModifyPWRequest request);
 
     boolean existByMemberEmail(String email);

@@ -30,6 +30,12 @@
         WHERE id = #{memberId}
     </update>
 
+    <delete id="remove" parameterType="Long">
+        DELETE
+        FROM member
+        WHERE id = #{id}
+    </delete>
+
     <select id="existByMemberEmail" parameterType="String" resultType="boolean">
         SELECT if(count(*) = 1, 1, 0)
         FROM member

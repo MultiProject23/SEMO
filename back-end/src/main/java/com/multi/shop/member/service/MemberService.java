@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Slf4j
@@ -63,6 +64,11 @@ public class MemberService {
 
     public List<Member> findMembers() {
         return memberRepository.findAll();
+    }
+
+    @Transactional
+    public void deleteById(Long id){
+        memberRepository.remove(id);
     }
 
     @Transactional

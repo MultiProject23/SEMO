@@ -33,6 +33,10 @@ public class MemberRepository {
         return memberMapper.findAll();
     }
 
+    public int remove(Long id){
+        return memberMapper.remove(id);
+    }
+
     public void updatePassword(MemberModifyPWRequest request) {
         memberMapper.updatePassword(request);
     }

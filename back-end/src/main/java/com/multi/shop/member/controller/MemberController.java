@@ -48,4 +48,10 @@ public class MemberController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(responses);
     }
+
+    @DeleteMapping("/api/admin/member/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        memberService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }
